@@ -1,0 +1,782 @@
+#edu{
+  height: 120px;
+  width: 100%;
+  color: white;
+  font-size: larger;
+  background-image: url('edu.jpg');
+
+  display: flex;
+  justify-content: center;
+  animation-name: heading;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 2s;
+  animation-iteration-count: 3;
+  animation-direction: normal;
+  border: 5px solid black;
+  border-bottom: 5px solid white;
+  border-radius: 20px;
+  margin-left: auto;
+  
+  
+  
+}
+#edu:hover{
+  background-image: url('maths.jpg');
+  background-size: cover;
+  color: white;
+
+
+}
+
+h3:hover{
+  background-color: plum;
+}
+h3{
+  margin-right: 100px;
+  background-color: blanchedalmond;
+  width: 280px;
+  height: 100px;
+  text-align: center;
+  font-family: cursive;
+  font-style: italic;
+  color: rgb(60, 2, 2);
+  justify-content: center;
+  border-radius: 20px;
+  border: 5px solid black;
+  transition: all 1s ease-in 0s;
+  text-decoration: dotted;
+  
+}
+
+
+ 
+  
+@keyframes heading{
+  from{font-size: 20px;}
+  to{font-size: 30px;}
+
+  from{
+
+    transform: scale(1);}
+    to{transform: scale(1.15);
+  }
+  
+  
+}
+
+body{
+
+  background-image: url('wg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  
+}
+
+
+#navbar{
+  height: 70px;
+  width: 100%;
+  background-color: rgb(88, 67, 67);
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 30px;
+  position: relative;
+  top: 30%;
+  left: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+  border-radius: 5px;
+  z-index: 1000;
+  margin-top: 100px;
+}
+
+button{
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  border-radius: 20px;
+  
+}
+button:hover{
+  background-color: blanchedalmond;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 15px;
+  color: #f2d9d9;
+  margin-bottom: 5px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.tab:hover {
+  background-color: #59d10a;
+}
+
+.content-section {
+  
+  padding: 20px;
+}
+
+.content-section h1 {
+  color: #333;
+  margin-top: 10em;
+  height: 100px;
+  background-color: #59d10a;
+}
+#home{
+  height: 50px;
+  background-color: #0f1111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  margin-top: 150px;
+
+}
+p{
+  display: inline;
+  margin-left: 120px;
+  font-size: 2rem;
+  height: 20px;
+  
+}
+.text1{
+  color: black;
+  background-color: #59d10a;
+}
+.text2{
+  background-color: blue;
+  color: rgb(117, 236, 236);
+}
+.text3{
+  background-color: hotpink;
+  color: rgb(82, 2, 45);
+}
+.text4{
+  background-color: lawngreen;
+  color: rgb(2, 68, 2);
+}
+
+.panel{
+  height: 50px;
+  background-color: #222f3d;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 30px;
+}
+.panel-ops p{
+  display: inline;
+  margin-left: 25px;
+  
+}
+.panel-ops{
+  width: 60%;
+  font-size: 2rem;
+}
+.panel-deals{
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.text{
+  font-size: 0.9rem;
+}
+.why{
+  height: 40px;
+  width: 30%;
+  background-color: #fff;
+  margin-top: 40px;
+  margin-left: 550px;
+  display: flex;
+  align-items: center;
+  
+}
+.text-why{
+  font-family: cursive;
+  font-weight: 700;
+  color:red
+}
+ .inst{
+  height: 120px;
+  width: 470px;
+  background-color: rgb(231, 118, 231);
+  margin-top: 30px;
+  margin-left: 80px;
+  padding-left: 200px;
+  
+  
+  
+  
+
+}
+.inst:hover{
+  border: 5px solid rgb(71,2,71);
+}
+h4{
+  
+  
+  text-align: center;
+  color: #0f1111;
+  text-transform: capitalize;
+ 
+
+} 
+
+  
+  
+
+
+
+.comp{
+  height: 120px;
+  width: 470px;
+  background-color: rgb(70, 173, 237);
+  margin-top: 10px;
+  margin-left: 810px;
+  padding-left: 200px;
+}
+.comp:hover{
+  border: 5px solid rgb(9, 9, 82)
+}
+h4{
+  display: inline;
+  
+} 
+
+.tech{
+  height: 120px;
+  width: 470px;
+  background-color: rgb(146, 233, 88);
+  margin-top: 30px;
+  margin-left: 80px;
+  padding-left: 200px;
+}
+.tech:hover{
+  border: 5px solid rgb(1, 62, 1);
+}
+h4{
+  display: inline;
+  
+} 
+
+.acc{
+  height: 120px;
+  width: 470px;
+  background-color: rgb(236, 157, 40);
+  margin-top: 40px;
+  margin-left: 810px;
+  padding-left: 200px;
+  
+}
+  
+
+.acc:hover{
+  border: 5px solid rgba(188, 53, 4, 0.874)
+}
+h4{
+  display: inline;
+  
+} 
+
+ 
+
+
+.f{
+  font-size: 50px;
+  font-style: normal;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  position: relative;
+  left: 600px;
+  color: rgb(2, 2, 66);
+  
+}
+
+ #nav-problem{
+  height: 50px;
+  width: 600px;
+
+  margin-top: 30px;
+  margin-left: 280px;
+  padding-left: 200px;
+}
+  #nav-problem li{
+    list-style: none;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: rgb(245, 121, 171);
+    padding: 10px;
+    border-radius: 4px;
+  }
+  #nav-problem li label{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #c20000;
+  }
+  #nav-problem li label span{
+    transform: rotate(90deg);
+  }
+  #nav-problem label + input[type="radio"]{
+    display: none;
+  }
+  #nav-problem .content{
+    padding: 0 10px;
+    line-height: 26px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+  }
+  #nav-problem label + input[type="radio"]:checked+.content{
+    max-height: 400px;
+  }
+  #nav-contact{
+    height: 800px;
+    width: 100%;
+    background-image: url('phone.jpg');
+    background-size: cover;
+    border: 5px solid rgb(82, 2, 55);
+  }
+  .need{
+    text-align: center;
+    color: #9a0505;
+    font-weight: 800;
+    font-style: initial;
+    padding-left: 90px;
+  }
+  .further{
+    font-size: 20px;
+    font-weight: 900;
+    color: red;
+    text-decoration: underline;
+    padding-left: 100px;
+    text-align: center;
+  }
+  #username{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 30px;
+    background-color: white;
+    width: 40px;
+    margin-bottom: 50px;
+
+  }
+  .input-name{
+    width: 550px;
+    height: 40px;
+    margin-left: 50px;
+    margin-bottom: 100px;
+    background-color: rgb(230, 126, 230);
+    border: 2px solid purple;
+    border-radius: 10px;
+  }
+  #phone{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 30px;
+    background-color: white;
+    width: 40px;
+
+  }
+  #email{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 30px;
+    background-color: white;
+    width: 40px;
+  }
+  #message{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 30px;
+    background-color: white;
+    width: 40px;
+  }
+  .email-us{
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .help-mail{
+    color: #c20000;
+    padding-right: 100px;
+  }
+
+
+  /* CSS FOR CHAT BOX */
+
+
+.chat-container {
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    margin-left: 34em;
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+
+  }
+
+
+#chat-box {
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #fff;
+   
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+
+input,textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    margin-right: 10px;
+    outline: none;
+    
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #0095f6;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+ 
+      background-color: #4caf50;
+      color: #fff;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    
+}
+
+button:hover {
+      background-color: #45a049;
+    }
+
+    button, input[type="reset"] {
+      margin-right: 10px;
+    }
+
+    input[type="reset"] {
+      background-color: #f44336;
+      color: #fff;
+    }
+.message {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #e6e6e6;
+}
+
+.message.user-message {
+    align-self: flex-end;
+    background-color: #007bb5;
+    color: #fff;
+}
+.delete-icon {
+    cursor: pointer;
+    color: #ff6961;
+    margin-left: 5px;
+}
+
+.delete-icon {
+    cursor: pointer;
+    color: #ff6961;
+    margin-left: 5px;
+    background: none;
+    border: none;
+}
+
+
+  h6{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    font-stretch: expanded;
+    color: rgb(136, 136, 245);
+    text-decoration: underline;
+    font-weight: 600;
+    position: relative;
+    width: 100%;
+    
+
+
+  }
+
+  h7{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    font-stretch: expanded;
+    color: rgb(230, 93, 180);
+    
+    
+    font-weight: 600;
+    position: relative;
+    width: 100%;
+    margin-left: 100px;
+  }
+  h8{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    padding: 30px 10px;
+    font-size: larger;
+    color: #80eb5c;
+    text-align: center;
+    width: 100%;
+    margin-left: 400px;
+  }
+  h9{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    padding: 40px;
+    font-size: larger;
+ 
+    width: 100%;
+    color: #f4e9e9;
+    text-align: center;
+    margin-left: 26em;
+    margin-bottom: 0;
+    height: 51px;
+
+  }
+  
+
+/*    css for doubt section */
+#doubtForm {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  box-sizing: border-box;
+  margin-left: 30em;
+
+}
+
+#doubtForm h2 {
+  text-align: center;
+  color: #ab1313;
+}
+h5{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font: 2em ;
+  font-weight: 800;
+  font-size: 40px;
+  text-align: center;
+  background-color: transparent;
+
+
+}
+#doubtSection {
+  margin-bottom: 20px;
+}
+
+#doubtList {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+#userNameInput,
+#doubtInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#doubtInput {
+  height: 80px;
+  color: #d80cb3;
+}
+
+h10{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #05ec05;
+    margin: 0;
+
+}
+
+
+
+button:hover {
+  background-color: #555;
+}
+
+.doubt {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+
+}
+
+.like {
+  cursor: pointer;
+  color: black;
+}
+
+
+.like, button {
+  cursor: pointer;
+  color: #0c3856;
+}
+
+.like.liked {
+  color: blue;
+}
+
+.like-count {
+  margin-left: 5px;
+}
+
+.answer-section {
+  display: none;
+  display: none;
+  margin-top: 10px;
+}
+
+.reply {
+  border: 1px solid #100606;
+  padding: 5px;
+  margin-bottom: 5px;
+  color: #05ec05;
+  margin-top: 25px;
+}
+
+.comments-heading {
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  padding: 20em 20;
+
+}
+  #doubtForm {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(218, 7, 7, 0.1);
+    width: 400px;
+    box-sizing: border-box;
+}
+
+#doubtForm h2 {
+    text-align: center;
+    color: #333;
+}
+
+#doubtSection {
+    margin-bottom: 20px;
+}
+
+#userNameInput,
+#doubtInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#doubtInput {
+    height: 80px;
+}
+
+
+
+button:hover {
+    background-color: #555;
+}
+
+.doubt {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.like {
+    position: relative;
+    cursor: pointer;
+    color: black;
+}
+
+.like.liked {
+    color: blue;
+}
+
+.answer-section {
+    display: none;
+    width:50%;
+  
+}
+
+button.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reply {
+    border: 1px solid #eee;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.comments-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.reply-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}

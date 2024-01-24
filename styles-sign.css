@@ -1,0 +1,89 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('ee.jpg');
+    
+  }
+  
+  header {
+    position: relative;
+    
+  }
+  
+  main {
+    Width: 500px;
+    max-width: 600px;
+    margin: 100px auto 0px auto;
+    padding: 1em;
+    height: 70%;
+    width: 500px;
+    font-size: 20px;
+    font-weight: 900;
+
+
+    border: 10px solid #281f1f;
+    background-image: url('ff.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    
+   
+    
+  }
+  
+
+  #signupform {
+    margin: 10px;
+  }
+  
+  label {
+    margin-bottom: 0.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-style: italic;
+    margin-left: 80px;
+    color: rgb(68, 0, 0);
+    font-style: oblique;
+    background-color: rgb(197, 114, 6);
+    font-family: cursive;
+  }
+  
+  input {
+    padding: 5px;
+    margin-bottom: 1em;
+    margin: 5px auto 5px auto;
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: #281f1f;
+    margin-left: 80px;
+    
+    
+  }
+  
+  
+
+
+  
+
+  
+  button {
+    padding: 10px;
+    background-color: #d11212;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight:600 ;
+    border-bottom: #3f12d1;
+    border-radius: 2px;
+    width:50%;
+    margin-left: 110px;
+
+  }
+  
+  
+   
