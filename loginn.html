@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="loginn.css">
+</head>
+
+<body>
+  <div id="edu">
+    <h3><b><i class="fa-solid fa-book"></i>   EDUCARE
+               <br>
+                <br>
+                <i class="fa-solid fa-user-graduate"></i> Share and Grow!</b></h3>
+  <img src="books.jpg"width=120>
+</div>
+<br>
+
+  <div id="navbar">
+    <div class="tab" onclick="changeTab('home')"><a href="loginn.html"><i class="fa-solid fa-house" ></i> HOME</a></div>
+    <div class="tab" onclick="changeTab('doubtsection')"><i class="fa-solid fa-question"></i><a href="doubt.html"> DOUBT SECTION</div></a>
+
+    <div class="tab" onclick="changeTab('post')"><i class="fa-solid fa-comments"></i> POST SECTION</div>
+    <div class="tab" onclick="changeTab('contact')"><i class="fa-solid fa-circle-info"></i> CONTACT US</div>
+    <button><a href="index.html" target="_blank"><i class="fa-solid fa-right-from-bracket"></i> LOG-OUT</a></button>
+
+  </div>
+  <div id="home" class="content-section">
+    
+          <div class="welcome">
+            
+            <p class="text1"><i class="fa-solid fa-house-user"></i>HOME</p>
+            <p class="text2">We Welcome You!</p>
+            <p class="text3">We are here to help You!</p>
+            <p class="text4">Shine Brighter &#9733;</p>
+          </div>
+        
+        <div class="panel">
+          <div class="panel-all">
+            All
+            <i class="fa-solid fa-arrow-right"></i>
+            
+          </div>
+          <div class="panel-ops">
+            <p class="text">Personalised Learning <i class="fa-solid fa-person"></i></p>
+            <p class="text">Trusted Content <i class="fa-solid fa-pen-to-square"></i></p>
+            <p class="text">Skill Up <i class="fa-solid fa-lightbulb"></i></p> 
+            <p class="text">Freedom to Question <i class="fa-solid fa-child-reaching"></i></p>
+            <p class="text">Lets Begin! <i class="fa-regular fa-thumbs-up"></i></p>
+        
+            </p>
+          </div>
+          <div class="panel-deals">
+            EDU-HELP
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+        </div>
+
+        <div class="why">
+        <p class="text-why">Why Eduhelp?</p>
+        </div>
+
+         <div class="inst">
+          <h2>Instant Solution</h2>
+          <h4>Get answer to your questions Instantly.</h4>
+        </div>
+
+        <div class="comp">
+          <h2>Collaborative Learning</h2>
+          <h4>Foster a sense of community through Collaborative discussions.</h4>
+        </div>
+
+        <div class="tech">
+          <h2>Tech-Savvy Approach</h2>
+          <h4>We leverage Latest Technology to create a seamless and Engaging Environment. </h4>
+        </div>
+
+        
+        
+        <div class="acc">
+          <h2>Accessible Anytime,Anywhere</h2>
+          <h4>Embrace Flexiblity by providing 24/7 access to Educational Resources. </h4>
+        </div> 
+        
+        <p class="f">FAQ'S</p>
+        
+        <ul id="nav-problem">
+          <li>
+            <label for="first">Which is best Problem-Solving forum?<span>&#x3e;</span></label>
+            <input type="radio" name="problem" id="first" checked>
+            <div class="content"><p>Eduhelp Forum is the best problem-solving educational platform including diverse communities of learners and educators fostering a rich pool of knowledge and perspectives.</p>
+            </div>
+          </li>
+          <li>
+            <label for="second">How to Ask Doubt?<span>&#x3e;</span></label>
+            <input type="radio" name="problem" id="second">
+            <div class="content"><p>Be Specific and relevant to your doubt,clearly articulate your doubt you are struggling with and post it in the post section respectively.</p>
+            </div>
+          </li>
+          <li>
+            <label for="third">Would I get resourceful content here?<span>&#x3e;</span></label>
+            <input type="radio" name="problem" id="third">
+            <div class="content"><p>Eduhelp Forum provides you repository guide of experienced educated seniors who have been once at your place,which would provide you to enhance the overall educational experience for users.</p>
+            </div>
+          </li>
+        </ul>
+  </div>
+
+
+  <div id="post" class="content-section">
+    <h6>Post Section</h6>
+          
+            
+        <!-- Content -->
+        <div id="content">
+          <h7>Mention your kind feedback to help us grow together...</h7>
+          <br>
+          <h8>Lets speak out !! we can confess without any judgements ...!!!</h8>
+        </div>
+
+
+            <div class="chat-container">
+              <div id="chat-box"></div>
+              <div class="input-container">
+                  <input type="text" id="message-input" placeholder="Type your message...">
+                  <button onclick="sendMessage()">Send</button>
+                  <button onclick="clearAll()">Clear All</button>
+              </div>
+          </div>
+
+          <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                  loadMessages();
+              });
+
+              function sendMessage() {
+                  var messageInput = document.getElementById("message-input");
+                  var chatBox = document.getElementById("chat-box");
+
+                  if (messageInput.value.trim() !== "") {
+                      var message = document.createElement("div");
+                      message.className = "message user-message";
+                      message.textContent = getUserName() + ": " + messageInput.value + getTimeSuffix();
+                      
+                      // Add delete button
+                      var deleteButton = document.createElement("button");
+                      deleteButton.className = "delete-icon";
+                      deleteButton.innerHTML = "&#128465;"; // Dustbin emoji
+                      deleteButton.onclick = function() {
+                          deleteMessage(message);
+                          deleteMessage(this.parentElement);
+                                  
+                      };
+
+                      message.appendChild(deleteButton);
+
+                      chatBox.appendChild(message);
+
+                      storeMessage(messageInput.value);
+
+                      messageInput.value = "";
+
+                      chatBox.scrollTop = chatBox.scrollHeight;
+                  }
+              }
+
+             
+              function deleteMessage(messageElement) {
+                  // Extract timestamp from message text using a more flexible regex
+                  var timestamp = messageElement.textContent.match(/\b\d{13}\b/);
+
+                  console.log('Timestamp:', timestamp);
+
+                  if (timestamp) {
+                      // Remove the message element
+                      messageElement.remove();
+
+                      // Remove the message from local storage
+                      removeMessageFromStorage(Number(timestamp[0]));
+                  }
+              }
+
+
+              // Assuming you have a removeMessageFromStorage function implemented like this:
+              function removeMessageFromStorage(timestamp) {
+                  // Retrieve messages from local storage
+                  var messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+                  // Filter out the message with the given timestamp
+                  var updatedMessages = messages.filter(function (message) {
+                      return message.timestamp !== timestamp;
+                  });
+
+                  // Save the updated messages back to local storage
+                  localStorage.setItem('messages', JSON.stringify(updatedMessages));
+              }
+
+
+              function storeMessage(message) {
+                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+
+                  messages.push({
+                      user: getUserName(),
+                      text: message,
+                      timestamp: new Date().getTime()  // Store timestamp as milliseconds
+                  });
+
+                  localStorage.setItem("chatMessages", JSON.stringify(messages));
+              }
+
+              function removeMessageFromStorage(timestamp) {
+                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+
+                  // Remove the message with the specified timestamp
+                  var updatedMessages = messages.filter(function (msg) {
+                      return msg.timestamp !== timestamp;
+                  });
+
+                  localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
+              }
+
+              function clearAll() {
+                  var chatBox = document.getElementById("chat-box");
+                  chatBox.innerHTML = ""; // Clear the chat box
+
+                  // Clear the local storage
+                  localStorage.removeItem("chatMessages");
+              }
+
+              function loadMessages() {
+                  var chatBox = document.getElementById("chat-box");
+                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+
+                  messages.forEach(function (msg) {
+                      var message = document.createElement("div");
+                      message.className = "message";
+                      message.textContent = msg.user + ": " + msg.text + getTimeSuffix(msg.timestamp);
+                      
+                      // Add delete button
+                      var deleteButton = document.createElement("button");
+                      deleteButton.className = "delete-icon";
+                      deleteButton.innerHTML = "&#128465;"; // Dustbin emoji
+                      deleteButton.onclick = function() {
+                          deleteMessage(message);
+                      };
+
+                      message.appendChild(deleteButton);
+
+                      message.classList.add(msg.user === getUserName() ? 'user-message' : 'other-message');
+                      chatBox.appendChild(message);
+                  });
+
+                  chatBox.scrollTop = chatBox.scrollHeight;
+              }
+
+              function getUserName() {
+                  var storedName = localStorage.getItem("userName");
+
+                  if (!storedName) {
+                      storedName = prompt("Please enter your name:");
+                      localStorage.setItem("userName", storedName);
+                  }
+
+                  return storedName;
+              }
+
+              function getTimeSuffix(timestamp) {
+                  if (!timestamp) return "";
+
+                  var now = new Date().getTime();
+                  var diff = now - timestamp;
+
+                  var seconds = Math.floor(diff / 1000);
+                  var minutes = Math.floor(seconds / 60);
+                  var hours = Math.floor(minutes / 60);
+                  var days = Math.floor(hours / 24);
+
+                  if (seconds < 60) {
+                      return " just now";
+                  } else if (minutes < 60) {
+                      return " " + minutes + (minutes === 1 ? " min ago" : " mins ago");
+                  } else if (hours < 24) {
+                      return " " + hours + (hours === 1 ? " hr ago" : " hrs ago");
+                  } else {
+                      return " " + days + (days === 1 ? " day ago" : " days ago");
+                  }
+              }
+
+
+          </script>
+
+        <video id="video-background" autoplay muted loop>
+          <source src="VD4.mp4" type="video/mp4">
+        </video>
+        <style>
+           /* Add styles for the video background */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        </style>
+       <div class="footerp">
+            <h9>thank you for sharing your thoughts...!!!</h9>
+       </div>
+
+
+  </div>
+
+<div id="doubtsection" class="content-section" >
+ 
+  
+</div>
+
+<div id="contact" class="content-section" >
+ 
+
+    <h1 class="contact">Contact Us</h1>
+    <div id="nav-contact">
+      <p class="need">NEED SUPPORT?</p>
+      <p class="further">Contact Us for Further Assistance</p>
+                  <br>
+      <label for="name" id="username">Name</label>
+      <input type="name" class="input-name" placeholder="Enter your Name">
+                    <br>
+      <label for="phone" id="phone">Phone No.</label>
+      <input type="number" class="input-name"  placeholder="Enter your Phone Number">
+                   <br>
+      <label for="Email" id="email">Email</label>
+      <input type="email" class="input-name" placeholder="Enter your Name">
+                   <br>
+      <label for="Message" id="message">Message</label>
+      <input type="text" class="input-name" placeholder="Message Us">
+                   <br>
+                   <label for="password" id="password">Password</label>
+                   <input type="password" class="input-name" placeholder="enter your password">            
+                    <br>
+      <button type="submit" id="Contactsub">Submit</button>             
+      <p class="email-us">Email Us</p>
+      <p class="help-mail">eduhelp@gmail.com</p>
+      
+
+    </div>
+    <script type="module">
+    
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+      import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      
+  
+      const firebaseConfig = {
+        apiKey: "AIzaSyCNlwV8JayiCnOIceM2olchvIqyvMlL-vY",
+        authDomain: "eduform-ffd1d.firebaseapp.com",
+        projectId: "eduform-ffd1d",
+        storageBucket: "eduform-ffd1d.appspot.com",
+        messagingSenderId: "871559454241",
+        appId: "1:871559454241:web:72242f4fb12dae57ad4d60",
+        measurementId: "G-3S0LH0MSZD"
+      };
+  
+      const app=  initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
+  
+    
+  
+       document.getElementById("Contactsub").addEventListener('click',(e)=>{
+  
+        var name = document.getElementById('username').value;
+        var phone= document.getElementById('phone').value;
+        var email= document.getElementById('email').value;
+        var message = document.getElementById('message').value;
+        var password= document.getElementById('password').value;
+        
+        createUserWithEmailAndPassword(auth, email,password).then((userCredential)=>{
+          
+          const user= userCredential.user ;
+            // to store realtime database : user data
+          set(ref(database, 'helpUserAuthList/' + userCredential.user.uid),{
+            username: name, 
+            email: email,
+            phone:phone,
+            message:messgage
+   
+          })
+          alert('Your Message is given to the Admin and will be contacted soon!')
+          window.location.href = "loginn.html" ;
+        })
+        .catch((error)=>{
+          
+          console.log(error.code); /////////
+          console.log(error.message); ///////
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        })
+      })
+       
+       
+      
+      </script>     
+    
+</div>  
+
+<script src="script.js"></script>
+</body>
+</html>

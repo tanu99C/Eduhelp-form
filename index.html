@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Eduhelp
+  </title>
+
+
+</head>
+<style>
+    h1{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 3.5em;
+        color: rgb(178, 201, 201);
+       
+        background-image:url('pu.jpg');
+        background-size: auto ;
+        width: 100%;
+        position: top;
+        text-align: center;
+    }
+    h2{
+        font-style: italic;
+        color: rgb(237, 245, 236);
+      
+        background-image: url(pk.jpg);
+        width: 100%;
+        text-align: center;
+    }
+    h3{
+        font-style: initial;
+        color: black;
+        font-size: 2em;
+        font-family: cursive;
+        width: 40%;
+        text-align: center;
+        background-color: aliceblue;
+        background-size: 30px;
+        margin-left: 150px;
+    }
+
+</style>
+<body>
+    <header>
+        <h1>
+            EDUCARE
+            
+        </h1>
+        <h2>
+            College Students Community
+            <br>
+            We Care For YOU!
+        </h2>
+    </header>
+    <header>
+    
+      <div class="slideshow-container">
+        <div class="slides">
+          <img src="1.png" style="width:100%">
+        </div>
+        <div class="slides">
+          <img src="2.png" style="width:100%">
+        </div>
+        <div class="slides">
+          <img src="3.png" style="width:100%">
+        </div>
+        <div class="slides">
+            <img src="4.png" style="width:100%">
+          </div>
+          <div class="slides">
+            <img src="5.png" style="width:100%">
+          </div>
+          <div class="slides">
+            <img src="6.png" style="width:100%">
+          </div>
+         
+    
+       
+        
+        <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+        
+        <div style="text-align:center">
+          <button class="dot" onclick="currentSlide(1)"></button>
+          <button class="dot" onclick="currentSlide(2)"></button>
+          <button class="dot" onclick="currentSlide(3)"></button>
+          <button class="dot" onclick="currentSlide(4)"></button>
+          <button class="dot" onclick="currentSlide(5)"></button>
+          <button class="dot" onclick="currentSlide(6)"></button>
+          
+        
+          
+        </div>
+      </div>
+    </header>
+    
+  <main>
+    <h3>
+        LOGIN 
+    </h3>
+    <div id="loginform" >
+      <label for="email"><b>Email:</b></label>
+      <input type="email" id="email" placeholder="Enter your email">
+      <label for="password"><b>Password:</b></label>
+      <input type="password" id="password" placeholder="Enter your password">
+      <BR>
+        <br>
+      <button id="login" type="button" name="login">Login</button>
+    </div>
+  </main>
+
+  <footer>
+    <p><b>Don't have an account? </b>
+      <br><a href="signup.html" target="_main"><button class="SignUp" id="signup">Sign Up</button></a>
+
+      </p>
+    
+
+    
+  </footer>
+
+  <script src="app.js" type="module"></script>
+  
+
+  <script type="module">
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, set, ref, child,update} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth , signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNlwV8JayiCnOIceM2olchvIqyvMlL-vY",
+      authDomain: "eduform-ffd1d.firebaseapp.com",
+      projectId: "eduform-ffd1d",
+      storageBucket: "eduform-ffd1d.appspot.com",
+      messagingSenderId: "871559454241",
+      appId: "1:871559454241:web:72242f4fb12dae57ad4d60",
+      measurementId: "G-3S0LH0MSZD"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database= getDatabase(app);
+    const auth= getAuth(app);
+    console.log(app);
+                                                                    
+    document.getElementById("login").addEventListener('click', function() {
+      const  email= document.getElementById("email").value ;
+      const  password= document.getElementById("password").value ;
+
+      signInWithEmailAndPassword(auth, email , password  )
+      .then((userCredential)=>{
+
+            const user= userCredential.user ;
+            
+            var lgdate = new Date();
+            // to update realtime database : user data
+            update(ref(database, 'UserAuthList/' + userCredential.user.uid),{
+              last_login: lgdate,
+            })  
+      
+            alert( user.email + ' logged in SUCCESSFULLY!!!');
+            window.location.href = "loginn.html" 
+          })
+          .catch((error)=>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorcode); ////////
+            console.log(errorMessage); ////////
+           
+            alert(errorMessage);
+          })
+    })
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lg.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #doubtList {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .doubt {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        h10 {
+            margin: 0;
+        }
+
+        .like, button {
+            cursor: pointer;
+            color: #3498db;
+        }
+
+        .like-count {
+            margin-left: 5px;
+        }
+
+        .reply-button {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .answer-section {
+            display: none;
+            
+        }
+
+        .reply {
+            margin-top: 5px;
+        }
+
+        button.delete-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+ 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa; 
+        }
+
+       
+
+        #doubtList {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .doubt {
+            background-color: white;
+            border: 1px solid #ddd; 
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+        h10 {
+            margin: 0;
+            font-size: 16px; 
+            color: #2d3436; 
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 18px; 
+            color: #333; 
+        }
+
+        .like, button {
+            cursor: pointer;
+            color: #ed4956; 
+        }
+
+        .like-count {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .reply-button {
+            background-color: #fafafa; 
+            border: 1px solid #ddd; 
+            padding: 8px;
+            border-radius: 5px;
+            color: #333; 
+        }
+
+        .answer-section {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .reply {
+            margin-top: 5px;
+            font-size: 16px; 
+            color: #333; 
+            size: 50px;
+            height: 30px;
+            width: 30px;
+        }
+
+        button.delete-button {
+            background-color: #ed4956; 
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            margin-right: 25em;
+        }
+
+        #doubtForm {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ddd; 
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: white; 
+            text-decoration: wavy;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px; 
+        }
+
+        button {
+            background-color: #3897f0; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2664a1; 
+        }
+
+        /* Add styles for the video background */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #back {
+            background-color: #20568a; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        #back:hover {
+            background-color: #2664a1; 
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>
+        Doubt Section
+    </h1>
+    <br>
+    <h2>
+        Mention your Doubts freely !!
+    </h2>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadSavedDoubts();
+        });
+
+        function loadSavedDoubts() {
+            const savedDoubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+            let doubtList = document.getElementById("doubtList");
+            if (!doubtList) {
+                doubtList = document.createElement("div");
+                doubtList.id = "doubtList";
+                document.body.appendChild(doubtList);
+            }
+
+            savedDoubts.forEach(savedDoubt => {
+                const newDoubt = createDoubtElement(savedDoubt);
+                doubtList.appendChild(newDoubt);
+            });
+        }
+
+        function saveToLocalStorage(dataKey, newData) {
+            let savedData = JSON.parse(localStorage.getItem(dataKey)) || [];
+            
+            const existingDataIndex = savedData.findIndex(data => data.id === newData.id);
+
+            if (existingDataIndex !== -1) {
+                savedData[existingDataIndex] = newData;
+            } else {
+                savedData.push(newData);
+            }
+
+            localStorage.setItem(dataKey, JSON.stringify(savedData));
+        }
+
+
+        function createDoubtElement(savedDoubt) {
+            const newDoubt = document.createElement("div");
+            newDoubt.className = "doubt";
+            newDoubt.id = savedDoubt.id || ("doubt" + Date.now());
+
+            const userName = document.createElement("h10");
+            userName.textContent = savedDoubt.userName;
+            
+
+            const doubtText = document.createElement("p");
+            doubtText.textContent = savedDoubt.doubtText;
+
+            const likeCounter = document.createElement("span");
+            likeCounter.textContent = savedDoubt.likes || "0";
+            likeCounter.className = "like-count";
+
+            const likeButton = document.createElement("span");
+            likeButton.className = "like";
+            likeButton.innerHTML = "Like ";
+            likeButton.appendChild(likeCounter);
+            likeButton.addEventListener("click", function () {
+                increaseLike(newDoubt, likeCounter, likeButton);
+            });
+
+            const replyButton = document.createElement("button");
+            replyButton.textContent = "Reply";
+            replyButton.addEventListener("click", function () {
+                showReplyForm(newDoubt);
+            });
+
+            const answerSection = document.createElement("div");
+            answerSection.className = "answer-section";
+
+            const answerInput = document.createElement("input");
+            answerInput.type = "text";
+            answerInput.placeholder = "Your Answer...";
+
+            const submitAnswerButton = document.createElement("button");
+            submitAnswerButton.textContent = "Submit Answer";
+            submitAnswerButton.addEventListener("click", function () {
+                submitAnswer(newDoubt, answerInput);
+            });
+
+            const commentsHeading = document.createElement("h4");
+            commentsHeading.className = "comments-heading";
+            
+            commentsHeading.textContent = "Comments";
+
+            function showReplyForm() {
+                answerSection.style.display = "block";
+            }
+
+            answerSection.appendChild(answerInput);
+            answerSection.appendChild(submitAnswerButton);
+
+            newDoubt.appendChild(userName);
+            newDoubt.appendChild(doubtText);
+            newDoubt.appendChild(likeButton);
+            newDoubt.appendChild(replyButton);
+            newDoubt.appendChild(answerSection);
+            newDoubt.appendChild(commentsHeading);
+
+            savedDoubt.replies.forEach(replyText => {
+                const replySection = document.createElement("div");
+                replySection.className = "reply";
+                replySection.textContent = replyText;
+                newDoubt.appendChild(replySection);
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", function () {
+                deleteDoubt(newDoubt.id);
+            });
+
+            newDoubt.appendChild(deleteButton);
+
+            return newDoubt;
+        }
+
+        
+
+        function getAllDoubts() {
+            return JSON.parse(localStorage.getItem("doubts")) || [];
+        }
+       
+
+        function increaseLike(doubt, counter, likeButton) {
+            if (!doubt.likedByUser) {
+                let currentCount = parseInt(counter.textContent);
+                counter.textContent = currentCount + 1;
+                doubt.likes = currentCount + 1;
+                doubt.likedByUser = true;
+                likeButton.classList.add("liked");
+                saveToLocalStorage("doubts", doubt);
+            }
+        }
+
+        function submitAnswer(doubt, answerInput) {
+            const replyText = answerInput.value;
+            if (replyText.trim() !== "") {
+                const replySection = document.createElement("div");
+                replySection.className = "reply";
+                replySection.textContent = replyText;
+                doubt.appendChild(replySection);
+
+                doubt.replies.push(replyText);
+                saveToLocalStorage("doubts", getAllDoubts());  // Update local storage with the entire array
+
+                answerInput.value = "";
+            }
+        }
+
+        function deleteDoubt(doubtId) {
+            const doubtElement = document.getElementById(doubtId);
+            doubtElement.remove();
+
+            const savedDoubts = getAllDoubts();
+            const updatedDoubts = savedDoubts.filter(doubt => doubt.id !== doubtId);
+            saveToLocalStorage("doubts", updatedDoubts);  // Update local storage with the filtered array
+        }
+
+
+
+        function askDoubt() {
+            const doubtInput = document.getElementById("doubtInput");
+            const userNameInput = document.getElementById("userNameInput");
+            const doubtList = document.getElementById("doubtList");
+
+            if (doubtInput.value.trim() !== "" && userNameInput.value.trim() !== "") {
+                const newDoubt = {
+                    id: "doubt" + Date.now(),
+                    userName: userNameInput.value,
+                    doubtText: doubtInput.value,
+                    likes: 0,
+                    likedByUser: false,
+                    replies: []
+                };
+
+                const newDoubtElement = createDoubtElement(newDoubt);
+
+                doubtList.appendChild(newDoubtElement);
+                saveToLocalStorage("doubts", newDoubt);
+
+                doubtInput.value = "";
+                userNameInput.value = "";
+            }
+        }
+    </script>
+
+
+<main>
+    <div id="doubtForm">
+        <h2>Ask Your Doubt</h2>
+        <div id="doubtSection">
+            <input type="text" id="userNameInput" placeholder="Your Name">
+            <textarea id="doubtInput" placeholder="Type your doubt..."></textarea>
+        </div>
+        <button onclick="askDoubt()">Ask</button>
+    </div>
+
+    <div id="doubtList"></div>
+</main>
+
+
+   
+   <script>
+    
+    if ('WebSocket' in window) {
+      (function () {
+        function refreshCSS() {
+          var sheets = [].slice.call(document.getElementsByTagName("link"));
+          var head = document.getElementsByTagName("head")[0];
+          for (var i = 0; i < sheets.length; ++i) {
+            var elem = sheets[i];
+            var parent = elem.parentElement || head;
+            parent.removeChild(elem);
+            var rel = elem.rel;
+            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+              var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+              elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+            }
+            parent.appendChild(elem);
+          }
+        }
+        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+        var address = protocol + window.location.host + window.location.pathname + '/ws';
+        var socket = new WebSocket(address);
+        socket.onmessage = function (msg) {
+          if (msg.data == 'reload') window.location.reload();
+          else if (msg.data == 'refreshcss') refreshCSS();
+        };
+        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+          console.log('Live reload enabled.');
+          sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+        }
+      })();
+    }
+    else {
+      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+
+    </script>
+
+
+        
+           
+
+      <video id="video-background" autoplay muted loop>
+        <source src="VD1.mp4" type="video/mp4">
+      </video>
+
+    <a href="loginn.html"><button id="back"> back to home page..</button></a>
+
+
+</body>
+</html>

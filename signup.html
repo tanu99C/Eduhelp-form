@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles-sign.css">
+  <title>Signup Form</title>
+</head>
+<style>
+   
+    h1{
+        color: rgb(239, 239, 15); 
+        text-align:center;
+        padding: 10px;
+        background-image: url('vv.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40%;
+        font-style: oblique;
+        
+
+
+    }
+</style>
+<body >
+  <main>
+    <h1>
+        Sign Up
+    </h1>
+    <div id="signupform">
+      <label for="name">Enter Your Name:</label>
+      <br>
+      <input type="name" id="name" placeholder="Enter your name">
+      <br>
+      <label for="email">Email:</label>
+      <br>
+      <input type="email" id="email" placeholder="Enter your email">
+       <br>
+      <label for="password">Create Your Password:</label>
+      <br>
+      <input type="password" id="password" placeholder="Enter your password">
+      <br>
+      <label for="gender">Gender :</label>
+      <br>
+      <input type="gender" id="gender" placeholder="Enter your gender">
+      <br>
+      <br>
+      <button id="signUp" type="submit" >Sign Up</button>
+    </div>
+  </main>
+  
+  <script type="module">
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNlwV8JayiCnOIceM2olchvIqyvMlL-vY",
+      authDomain: "eduform-ffd1d.firebaseapp.com",
+      projectId: "eduform-ffd1d",
+      storageBucket: "eduform-ffd1d.appspot.com",
+      messagingSenderId: "871559454241",
+      appId: "1:871559454241:web:72242f4fb12dae57ad4d60",
+      measurementId: "G-3S0LH0MSZD"
+    };
+
+    const app=  initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+  
+
+     document.getElementById("signUp").addEventListener('click',(e)=>{
+
+      var name = document.getElementById('name').value;
+      var email= document.getElementById('email').value;
+      var password= document.getElementById('password').value;
+      var gender = document.getElementById('gender').value;
+
+      createUserWithEmailAndPassword(auth, email , password).then((userCredential)=>{
+        
+        const user= userCredential.user ;
+          // to store realtime database : user data
+        set(ref(database, 'UserAuthList/' + userCredential.user.uid),{
+          username: name, 
+          email: email
+ 
+        })
+        alert('sign up successfull, open home and login using your registered credentials')
+        window.location.href = "index.html" ;
+      })
+      .catch((error)=>{
+        
+        console.log(error.code); /////////
+        console.log(error.message); ///////
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      })
+    })
+     
+     
+    
+    </script>
+</body>
+</html>
