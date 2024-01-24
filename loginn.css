@@ -94,16 +94,6 @@ body{
   margin-top: 100px;
 }
 
-button{
-  background-color: red;
-  color: white;
-  font-weight: bolder;
-  border-radius: 20px;
-  
-}
-button:hover{
-  background-color: blanchedalmond;
-}
 
 .tab {
   cursor: pointer;
@@ -472,7 +462,7 @@ input,textarea {
 button {
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #0095f6;
+    
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -489,7 +479,7 @@ button {
 }
 
 button:hover {
-      background-color: #45a049;
+      background-color: #dd2e0f;
     }
 
     button, input[type="reset"] {
