@@ -192,6 +192,25 @@
                     }
                 }
 
+                function storeMessage(message) {
+                    var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+                
+                    messages.push(message);
+                
+                    localStorage.setItem("chatMessages", JSON.stringify(messages));
+                }
+
+                function loadMessages() {
+                    var chatBox = document.getElementById("chat-box");
+                    var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+            
+                    messages.forEach(function (msg) {
+                        var messageElement = createMessageElement(msg);
+                        chatBox.appendChild(messageElement);
+                    });
+            
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
                 function removeMessageFromStorage(timestamp) {
                     var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
 
@@ -211,19 +230,6 @@
                     localStorage.removeItem("chatMessages");
                 }
 
-                function loadMessages() {
-                    var chatBox = document.getElementById("chat-box");
-                    var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
-
-                    messages.forEach(function (msg) {
-                        var messageElement = createMessageElement(msg);
-                        chatBox.appendChild(messageElement);
-                    });
-
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }
-
-        
               function getUserName() {
                   var storedName = localStorage.getItem("userName");
 
