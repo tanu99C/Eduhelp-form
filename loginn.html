@@ -130,131 +130,100 @@
               </div>
           </div>
 
+        
           <script>
-              document.addEventListener("DOMContentLoaded", function() {
-                  loadMessages();
-              });
+            document.addEventListener("DOMContentLoaded", function () {
+                loadMessages();
+            });
+        
+                 function sendMessage() {
+                    var messageInput = document.getElementById("message-input");
+                    var chatBox = document.getElementById("chat-box");
 
-              function sendMessage() {
-                  var messageInput = document.getElementById("message-input");
-                  var chatBox = document.getElementById("chat-box");
+                    if (messageInput.value.trim() !== "") {
+                        var timestamp = new Date().getTime(); // Generate a timestamp
+                        var message = {
+                            user: getUserName(),
+                            text: messageInput.value,
+                            timestamp: timestamp
+                        };
 
-                  if (messageInput.value.trim() !== "") {
-                      var message = document.createElement("div");
-                      message.className = "message user-message";
-                      message.textContent = getUserName() + ": " + messageInput.value + getTimeSuffix();
-                      
-                      // Add delete button
-                      var deleteButton = document.createElement("button");
-                      deleteButton.className = "delete-icon";
-                      deleteButton.innerHTML = "&#128465;"; // Dustbin emoji
-                      deleteButton.onclick = function() {
-                          deleteMessage(message);
-                          deleteMessage(this.parentElement);
-                                  
-                      };
+                        var messageElement = createMessageElement(message);
+                        chatBox.appendChild(messageElement);
 
-                      message.appendChild(deleteButton);
+                        storeMessage(message);
 
-                      chatBox.appendChild(message);
+                        messageInput.value = "";
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }
+                }
 
-                      storeMessage(messageInput.value);
+                function createMessageElement(message) {
+                    var messageElement = document.createElement("div");
+                    messageElement.className = "message";
+                    messageElement.textContent = message.user + ": " + message.text + getTimeSuffix(message.timestamp);
 
-                      messageInput.value = "";
+                    // Add delete button
+                    var deleteButton = document.createElement("button");
+                    deleteButton.className = "delete-icon";
+                    deleteButton.innerHTML = "&#128465;"; // Dustbin emoji
+                    deleteButton.onclick = function () {
+                        deleteMessage(message.timestamp);
+                    };
 
-                      chatBox.scrollTop = chatBox.scrollHeight;
-                  }
-              }
+                    messageElement.appendChild(deleteButton);
 
-             
-              function deleteMessage(messageElement) {
-                  // Extract timestamp from message text using a more flexible regex
-                  var timestamp = messageElement.textContent.match(/\b\d{13}\b/);
+                    messageElement.classList.add(message.user === getUserName() ? 'user-message' : 'other-message');
+                    messageElement.setAttribute("data-timestamp", message.timestamp);
 
-                  console.log('Timestamp:', timestamp);
+                    return messageElement;
+                }
 
-                  if (timestamp) {
-                      // Remove the message element
-                      messageElement.remove();
+                function deleteMessage(timestamp) {
+                    var chatBox = document.getElementById("chat-box");
+                    var messageElement = chatBox.querySelector("[data-timestamp='" + timestamp + "']");
 
-                      // Remove the message from local storage
-                      removeMessageFromStorage(Number(timestamp[0]));
-                  }
-              }
+                    if (messageElement) {
+                        // Remove the message element
+                        messageElement.remove();
 
+                        // Remove the message from local storage
+                        removeMessageFromStorage(timestamp);
+                    }
+                }
 
-              
-              function removeMessageFromStorage(timestamp) {
-                  // Retrieve messages from local storage
-                  var messages = JSON.parse(localStorage.getItem('messages')) || [];
+                function removeMessageFromStorage(timestamp) {
+                    var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
 
-                  // Filter out the message with the given timestamp
-                  var updatedMessages = messages.filter(function (message) {
-                      return message.timestamp !== timestamp;
-                  });
+                    // Filter out the message with the specified timestamp
+                    var updatedMessages = messages.filter(function (msg) {
+                        return msg.timestamp !== timestamp;
+                    });
 
-                  // Save the updated messages back to local storage
-                  localStorage.setItem('messages', JSON.stringify(updatedMessages));
-              }
+                    localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
+                }
 
+                function clearAll() {
+                    var chatBox = document.getElementById("chat-box");
+                    chatBox.innerHTML = ""; // Clear the chat box
 
-              function storeMessage(message) {
-                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+                    // Clear the local storage
+                    localStorage.removeItem("chatMessages");
+                }
 
-                  messages.push({
-                      user: getUserName(),
-                      text: message,
-                      timestamp: new Date().getTime()  // Store timestamp as milliseconds
-                  });
+                function loadMessages() {
+                    var chatBox = document.getElementById("chat-box");
+                    var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
 
-                  localStorage.setItem("chatMessages", JSON.stringify(messages));
-              }
+                    messages.forEach(function (msg) {
+                        var messageElement = createMessageElement(msg);
+                        chatBox.appendChild(messageElement);
+                    });
 
-              function removeMessageFromStorage(timestamp) {
-                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
 
-                  // Remove the message with the specified timestamp
-                  var updatedMessages = messages.filter(function (msg) {
-                      return msg.timestamp !== timestamp;
-                  });
-
-                  localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
-              }
-
-              function clearAll() {
-                  var chatBox = document.getElementById("chat-box");
-                  chatBox.innerHTML = ""; // Clear the chat box
-
-                  // Clear the local storage
-                  localStorage.removeItem("chatMessages");
-              }
-
-              function loadMessages() {
-                  var chatBox = document.getElementById("chat-box");
-                  var messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
-
-                  messages.forEach(function (msg) {
-                      var message = document.createElement("div");
-                      message.className = "message";
-                      message.textContent = msg.user + ": " + msg.text + getTimeSuffix(msg.timestamp);
-                      
-                      // Add delete button
-                      var deleteButton = document.createElement("button");
-                      deleteButton.className = "delete-icon";
-                      deleteButton.innerHTML = "&#128465;"; // Dustbin emoji
-                      deleteButton.onclick = function() {
-                          deleteMessage(message);
-                      };
-
-                      message.appendChild(deleteButton);
-
-                      message.classList.add(msg.user === getUserName() ? 'user-message' : 'other-message');
-                      chatBox.appendChild(message);
-                  });
-
-                  chatBox.scrollTop = chatBox.scrollHeight;
-              }
-
+        
               function getUserName() {
                   var storedName = localStorage.getItem("userName");
 
